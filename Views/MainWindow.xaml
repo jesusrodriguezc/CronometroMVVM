@@ -5,26 +5,71 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CronometroAncert.ViewModels"
         mc:Ignorable="d"
-        Title="Cronómetro" Height="450" Width="800">
+        Title="Cronómetro" Height="600" Width="920"
+        WindowStyle="None"
+        ResizeMode="CanMinimize"
+        Background="Transparent"
+        AllowsTransparency="True"
+        >
+
     <Window.DataContext>
         <local:TimerViewModel/>
     </Window.DataContext>
 
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="402" Width="780" Margin="16,16,16,16" >
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <Label Grid.Column="0" Grid.ColumnSpan="3" Content="CRONÓMETRO" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Cascadia Code SemiBold" FontSize="48" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="timerLabel" Grid.Column="0" Grid.Row ="1" Grid.ColumnSpan="3" Content="{Binding TimeString}" HorizontalAlignment="Left" Margin="182,0,0,0" VerticalAlignment="Center" FontSize="32" FontFamily="Cascadia Code" Width="433" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Button x:Name="startButton" ToolTip="Inicia el contador" Grid.Row="2" Grid.Column="0" Content="Start" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontFamily="Cascadia Code SemiBold" Width="100" Height="40" Command="{Binding StartCommand}"/>
-        <Button x:Name="pauseButton" ToolTip="Pausa el contador" Grid.Row="2" Grid.Column="1" Content="Pause" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontFamily="Cascadia Code SemiBold" Width="100" Height="40" Command="{Binding PauseCommand}"/>
-        <Button x:Name="stopButton" ToolTip="Reinicia el contador" Grid.Row="2" Grid.Column="2" Content="Stop" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontFamily="Cascadia Code SemiBold" Width="100" Height="40" Command="{Binding StopCommand}"/>
-    </Grid>
+
+    <Border Background="#121212"
+            CornerRadius="10"
+            Margin="32,32,32,32">
+
+        <Grid Margin="16,16,16,16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Label Content="CRONÓMETRO" 
+                   Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3"
+                   VerticalContentAlignment="Center" Margin="32,0,0,0" 
+                   FontSize="32" Foreground="#eceefa" FontFamily="Verdana" HorizontalContentAlignment="Center"
+                   />
+            <Label Grid.Column="0" Grid.Row ="1" Grid.ColumnSpan="3"
+                   Content="{Binding TimeString}" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" 
+                   FontSize="64" FontFamily="Cascadia Code" Foreground="#FFEEEEEE"
+                   VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="0,0,0,0" 
+                   />
+            <Button ToolTip="Inicia el contador" 
+                    Grid.Row="2" Grid.Column="0" 
+                    Content="Start" Style="{StaticResource MainButtonTheme}"
+                    HorizontalAlignment="Right" VerticalAlignment="Center" 
+                    FontSize="24" FontFamily="Verdana" 
+                    Width="100" Height="40" 
+                    Command="{Binding StartCommand}"/>
+            <Button ToolTip="Pausa el contador" 
+                    Grid.Row="2" Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center" 
+                    Content="Pause" Style="{StaticResource MainButtonTheme}"
+                    FontSize="24" FontFamily="Verdana" 
+                    Width="100" Height="40" 
+                    Command="{Binding PauseCommand}"/>
+            <Button ToolTip="Reinicia el contador" 
+                    Grid.Row="2" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                    Content="Stop" Style="{StaticResource MainButtonTheme}"
+                    FontSize="24" FontFamily="Verdana" 
+                    Width="100" Height="40" 
+                    Command="{Binding StopCommand}"/>
+            <Label Grid.Column="0" Grid.Row ="3" Grid.ColumnSpan="3"
+                   Content="Hecho por Jesús Rodríguez-Carretero" 
+                   HorizontalAlignment="Right" VerticalAlignment="Center" 
+                   FontSize="16" FontFamily="Cascadia Code" Foreground="#FFEEEEEE"
+                   VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="0,0,16,0" 
+                   />
+        </Grid>
+    </Border>
+
 </Window>
